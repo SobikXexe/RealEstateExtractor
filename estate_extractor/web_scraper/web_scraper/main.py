@@ -1,7 +1,5 @@
-import scrapy
 from scrapy.crawler import CrawlerProcess
-import spiders.sreality as sp
-from scrapy.utils.project import get_project_settings
+import web_scraper.spiders.sreality as sp
 
 if __name__ == "__main__":
 
