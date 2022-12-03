@@ -1,7 +1,7 @@
 import scrapy
 from scrapy.crawler import CrawlerProcess
 import spiders.sreality as sp
-
+from scrapy.utils.project import get_project_settings
 
 if __name__ == "__main__":
 
@@ -21,7 +21,6 @@ if __name__ == "__main__":
     # )
     # args = parser.parse_args()
     # run(addr=args.listen, port=args.port)
-
 
     process = CrawlerProcess()
     
