@@ -8,7 +8,7 @@ def render_list(doc, tag, text, data):
     for i, item in enumerate(data):
         with tag('tr'):
             with tag('td'):
-                text(i)
+                text(i+1)
             with tag('td'):
                 doc.stag('img', src=item[1], style="width:100px;")
             with tag('td'):
@@ -18,7 +18,7 @@ def render_page():
     sqlcli.refresh_data()
     data = sqlcli.get_data()
     doc, tag, text = Doc().tagtext()
-    doc.asis('<!DOCTYPE html>')
+    doc.asis('<!DOCTYPE html><meta charset="UTF-8">')
     with tag('html'):
         with tag('head'):
             pass
@@ -49,7 +49,6 @@ def render_page():
                 render_list(doc, tag, text, data)
     
     result = doc.getvalue()
-    print(result)
     return result
 
                     
