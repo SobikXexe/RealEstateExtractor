@@ -1,0 +1,42 @@
+version: "3.8"
+services:
+  real_estate_db:
+    container_name: real_estate_db
+    image: real_estate_database
+    env_file:
+      - env_file.env
+    networks:
+      my_net:
+        ipv4_address: "192.168.93.10"
+    #volumes:
+    #  - ./postgres-data:/var/lib/postgresql/data
+
+
+  http_server:
+    container_name: http_server
+    image: http_server
+    env_file:
+      - env_file.env
+    ports:
+      - "8080:8080"
+    networks:
+      my_net:
+        ipv4_address: "192.168.93.11"
+
+
+  web_scraper:
+    container_name: web_scraper
+    image: web_scraper
+    env_file:
+      - env_file.env
+    networks:
+      my_net:
+        ipv4_address: "192.168.93.12"
+
+
+networks:
+  my_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: "192.168.93.0/24"
